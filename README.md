@@ -8,6 +8,9 @@ Projet du cours de Blockchain et cryptomonnaies — Master 1, Université de Kin
 
 - NDUBU LULE BENITO
 - KAMBA KATANU NOÉ
+- WUMBA WUBA ALBERT
+- KISIMBULA MAKOKA PASCAL
+
 
 ## Objectifs
 
@@ -104,6 +107,4 @@ Canal : 219 784 gas (ouverture + fermeture), constant. Transferts classiques : N
 
 Réseau de test uniquement, jetons sans valeur réelle, aucune donnée personnelle sur la chaîne, aucune clé privée publiée. Dépendances citées : Hardhat, ethers.js, OpenZeppelin, MetaMask.
 
-## Captures d'écran
 
-À ajouter dans `docs/` puis référencer ici.
