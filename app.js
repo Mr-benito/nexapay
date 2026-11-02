@@ -331,7 +331,7 @@ $("close-channel-btn").addEventListener("click",async()=>{
 function getDomain() {
   const a=state.settings.contractAddress;
   if(!a||!ethers.isAddress(a)) throw new Error("Configure l'adresse du contrat avant de signer.");
-  return {name:"WiFiPaymentChannel",version:"1",chainId:BigInt(state.settings.chainId||11155111),verifyingContract:a};
+  return {name:"WiFiPaymentChannel",version:"1",chainId:Number(state.settings.chainId||11155111),verifyingContract:a};
 }
 function labTypes() {
   return {Payment:[{name:"channelId",type:"bytes32"},{name:"cumulativeAmount",type:"uint256"}]};
