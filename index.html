@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <title>NexaPay — Micropaiements Web3</title>
+  <link rel="stylesheet" href="./style.css">
+  </head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="NexaPay accueil">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 10h8l16 20h-8L8 10Zm0 20V10l24 20V10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>NexaPay</strong><small>PAYMENT INFRASTRUCTURE</small></span>
+      </a>
+      <div class="workspace-label">ESPACE DE TRAVAIL</div>
+      <nav class="nav">
+        <button class="nav-item active" data-page="overview"><span>▦</span>Vue d'ensemble</button>
+        <button class="nav-item" data-page="channels"><span>◈</span>Canaux de paiement</button>
+        <button class="nav-item" data-page="wifi"><span>⌁</span>Accès Wi-Fi</button>
+        <button class="nav-item" data-page="crypto"><span>⌘</span>Laboratoire EIP-712</button>
+        <button class="nav-item" data-page="analytics"><span>↗</span>Analyse des coûts</button>
+        <button class="nav-item" data-page="history"><span>≡</span>Historique & audit</button>
+        <button class="nav-item" data-page="provider"><span>▤</span>Console fournisseur</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="network-card"><span class="pulse"></span><div><strong>Sepolia Testnet</strong><small id="network-label">Portefeuille non connecté</small></div></div>
+        <button class="nav-item" data-page="settings"><span>⚙</span>Configuration</button>
+        <div class="profile-mini"><div class="avatar">NP</div><div><strong id="profile-address">Mode démonstration</strong><small>Prototype de soutenance</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Ouvrir le menu">☰</button>
+        <div><div class="eyebrow">INFRASTRUCTURE DE MICROPAIEMENTS</div><h1 id="page-title">Vue d'ensemble</h1></div>
+        <div class="top-actions">
+          <span class="network-pill"><span class="pulse"></span> Sepolia</span>
+          <button class="btn btn-secondary" id="connect-btn"><span>◇</span> Connecter MetaMask</button>
+          <button class="icon-btn" id="help-btn" title="Aide">?</button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-overview">
+        <div class="hero">
+          <div class="hero-copy"><span class="kicker">PAIEMENT À L'USAGE · WEB3</span><h2>Des micropaiements.<br><em>Sans friction.</em></h2><p>Un canal de paiement, plusieurs échanges hors chaîne, un règlement vérifiable sur Ethereum.</p><div class="hero-actions"><button class="btn btn-primary" data-go="channels">Explorer les canaux <span>↗</span></button><button class="btn btn-ghost" data-go="crypto">Comprendre EIP-712</button></div></div>
+          <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div><div class="hero-center"><svg viewBox="0 0 80 80"><path d="M17 20h14l32 40H49L17 20Zm0 40V20l46 40V20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="float-card fc-top"><span class="float-dot"></span><div><small>Dernière signature</small><strong id="badge-state">En attente de signature</strong></div><b id="badge-mark">…</b></div><div class="float-card fc-bottom"><span class="mini-icon">↗</span><div><small>Économie simulée</small><strong id="hero-savings">— ETH</strong></div></div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Canaux actifs</span><span class="stat-icon violet">◈</span></div><div class="stat-value" id="stat-channels">0</div><div class="stat-foot"><span class="neutral-dot"></span>Sur ce navigateur</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Valeur signée</span><span class="stat-icon cyan">⌁</span></div><div class="stat-value"><span id="stat-paid">0.0000</span><small> ETH</small></div><div class="stat-foot">Cumul des preuves enregistrées localement</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Signatures</span><span class="stat-icon green">⌘</span></div><div class="stat-value" id="stat-signatures">0</div><div class="stat-foot">Demandes de signature réussies</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Économie simulée</span><span class="stat-icon amber">↗</span></div><div class="stat-value"><span id="stat-savings">0.0000</span><small> ETH</small></div><div class="stat-foot">Estimation, non frais mesurés</div></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel panel-wide"><div class="panel-heading"><div><h3>Activité récente</h3><p>Événements locaux de la plateforme</p></div><button class="text-btn" data-go="history">Tout voir ↗</button></div><div id="overview-activity" class="activity-list"><div class="empty-state"><div class="empty-symbol">⌁</div><strong>Aucune activité pour le moment</strong><p>Connecte un portefeuille ou lance une démonstration pour commencer.</p></div></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Cycle d'un canal</h3><p>Le principe en quatre étapes</p></div></div><div class="step-list"><div class="step"><span>01</span><div><strong>Déposer</strong><small>Verrouiller une garantie on-chain</small></div></div><div class="step"><span>02</span><div><strong>Signer</strong><small>Autoriser des montants cumulés</small></div></div><div class="step"><span>03</span><div><strong>Échanger</strong><small>Transmettre les preuves hors chaîne</small></div></div><div class="step"><span>04</span><div><strong>Régler</strong><small>Distribuer les fonds on-chain</small></div></div></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-channels">
+        <div class="page-intro"><div><span class="kicker">GESTION ON-CHAIN</span><h2>Canaux de paiement</h2><p>Ouvre un canal de test, consulte son état et suis les montants engagés.</p></div><div class="intro-badge"><span class="pulse"></span> Réseau de test uniquement</div></div>
+        <div class="two-col">
+          <article class="panel"><div class="panel-heading"><div><h3>Nouveau canal</h3><p>Le dépôt sera bloqué dans le contrat</p></div><span class="stat-icon violet">＋</span></div><label for="payee-address">Adresse du fournisseur</label><input id="payee-address" class="field" placeholder="0x..." spellcheck="false"><label for="deposit-amount">Dépôt initial (ETH)</label><input id="deposit-amount" class="field" type="number" min="0.0001" step="0.001" value="0.01"><label for="challenge-period">Période de contestation (fixée par le contrat)</label><div class="readonly-field">Définie dans le contrat déployé</div><button class="btn btn-primary full" id="open-channel-btn">Ouvrir un canal <span>↗</span></button><p class="field-hint">Une transaction blockchain est requise. Prévois de l'ETH Sepolia pour le gas.</p></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Canal sélectionné</h3><p>État chargé depuis le navigateur ou le contrat</p></div><span class="status-chip" id="channel-state-chip">Aucun canal</span></div><div class="channel-summary"><div><small>Identifiant</small><strong class="mono" id="channel-id">—</strong></div><div class="summary-grid"><div><small>Dépôt</small><strong id="channel-deposit">0 ETH</strong></div><div><small>Montant signé</small><strong id="channel-cumulative">0 ETH</strong></div><div><small>Solde indicatif</small><strong id="channel-remaining">—</strong></div><div><small>Minutes simulées</small><strong id="channel-minutes">0</strong></div></div></div><div class="button-stack"><button class="btn btn-secondary full" id="refresh-channel-btn">Actualiser l'état</button><button class="btn btn-danger full" id="close-channel-btn" disabled>Régler avec le dernier reçu (fournisseur)</button></div><p class="field-hint" id="channel-note">Le canal doit être ouvert avant les paiements. La fermeture requiert une preuve valide.</p></article>
+        </div>
+        <article class="panel"><div class="panel-heading"><div><h3>Fermeture unilatérale et contestation</h3><p>Si l'autre partie ne répond plus. Délai de contestation fixé par le contrat : 24 h.</p></div><span class="status-chip" id="dispute-chip">Aucune contestation</span></div><div class="button-row"><button class="btn btn-secondary" id="start-dispute-btn">1. Démarrer la fermeture</button><button class="btn btn-secondary" id="dispute-sig-btn">2. Contester avec le dernier reçu</button><button class="btn btn-primary" id="finalize-btn">3. Finaliser après le délai</button></div><p class="field-hint" id="dispute-info"></p></article>
+        <article class="panel table-panel"><div class="panel-heading"><div><h3>Mes canaux</h3><p>Canaux créés depuis cette session</p></div><button class="btn btn-secondary btn-small" id="export-channels">Exporter JSON</button></div><div class="table-wrap"><table><thead><tr><th>Canal</th><th>Fournisseur</th><th>Dépôt</th><th>Statut</th><th>Action</th></tr></thead><tbody id="channels-table"><tr><td colspan="5" class="table-empty">Aucun canal enregistré.</td></tr></tbody></table></div></article>
+      </section>
+
+      <section class="page" id="page-wifi">
+        <div class="page-intro"><div><span class="kicker">PAIEMENT À L'USAGE</span><h2>Accès Wi-Fi à la minute</h2><p>Chaque minute est facturée par une signature EIP-712 vérifiée. L'accès réseau reste simulé : aucun routeur réel n'est contrôlé.</p></div><div class="intro-badge"><span class="pulse"></span> Démonstration</div></div>
+        <div class="wifi-layout">
+          <article class="panel wifi-main"><div class="wifi-visual"><div class="wifi-circle"><span>⌁</span></div><div><span class="kicker">SESSION DE TEST</span><h3 id="wifi-session-state">Prêt à se connecter</h3><p id="wifi-session-subtitle">Ouvre un canal avant de lancer la session.</p></div></div><div class="timer" id="wifi-timer">00:00</div><div class="progress-track"><div id="wifi-progress" class="progress-fill"></div></div><div class="wifi-metrics"><div><small>Temps facturé</small><strong id="wifi-minutes">0 min</strong></div><div><small>Coût estimé</small><strong id="wifi-cost">0.0000 ETH</strong></div><div><small>Reste indicatif</small><strong id="wifi-balance">— ETH</strong></div></div><div class="button-row"><button class="btn btn-primary" id="wifi-start-btn">Démarrer la session</button><button class="btn btn-secondary" id="wifi-stop-btn" disabled>Terminer</button></div><p class="field-hint">La facturation de démonstration suit le temps écoulé. Une signature EIP-712 est demandée à chaque validation de minute.</p></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Configuration tarifaire</h3><p>Paramètres du scénario de test</p></div></div><label for="wifi-rate">Tarif par minute (ETH)</label><input class="field" id="wifi-rate" type="number" min="0.000001" step="0.0001" value="0.001"><label for="wifi-speed">Durée d'une minute facturée</label><select class="field" id="wifi-speed"><option value="60000">60 s (réel)</option><option value="5000">5 s (démo)</option></select><label for="wifi-provider">Fournisseur</label><input class="field" id="wifi-provider" class="field" placeholder="Adresse du fournisseur"><div class="notice"><strong>À propos de la sécurité</strong><p>Le tarif affiché dans le navigateur ne fait pas autorité. En production, le serveur et le contrat doivent vérifier le tarif, le canal, la séquence et la preuve signée.</p></div><button class="btn btn-secondary full" id="wifi-demo-btn">Lancer une démo sans blockchain</button></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-crypto">
+        <div class="page-intro"><div><span class="kicker">CRYPTOGRAPHIE APPLIQUÉE</span><h2>Laboratoire EIP-712</h2><p>Observe les données structurées, signe un message et vérifie la signature.</p></div><div class="intro-badge">Ethers.js v6</div></div>
+        <div class="two-col">
+          <article class="panel"><div class="panel-heading"><div><h3>Message structuré</h3><p>Exemple pédagogique ; le contrat doit utiliser exactement le même schéma.</p></div></div><label>Identifiant de canal (bytes32)</label><input class="field mono" id="lab-channel-id" placeholder="0x + 64 caractères hexadécimaux"><label>Montant cumulé (ETH)</label><input class="field" id="lab-amount" type="number" min="0" step="0.001" value="0.001"><button class="btn btn-primary full" id="lab-sign-btn">Signer le message EIP-712</button><div class="notice"><strong>Attention</strong><p>Ce schéma de laboratoire doit correspondre au domaine et aux types implémentés dans le contrat avant d'être utilisé pour un règlement réel.</p></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Résultat cryptographique</h3><p>Les données sensibles restent dans ton portefeuille.</p></div></div><div class="result-block"><small>Adresse signataire</small><code id="lab-signer">—</code></div><div class="result-block"><small>Signature</small><code id="lab-signature">Aucune signature produite</code></div><div class="result-block"><small>Hash structuré</small><code id="lab-hash">—</code></div><div class="result-block"><small>Vérification</small><strong id="lab-verify" class="verify-idle">En attente</strong></div><button class="btn btn-secondary full" id="lab-verify-btn" disabled>Vérifier la signature</button><button class="btn btn-ghost full" id="lab-tamper-btn" disabled>Tester une donnée modifiée</button><p class="field-hint" id="lab-note">Connecte un portefeuille pour signer. Une signature EIP-712 n'est pas une transaction on-chain.</p></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-analytics">
+        <div class="page-intro"><div><span class="kicker">ÉVALUATION EXPÉRIMENTALE</span><h2>Analyse des coûts</h2><p>Compare un paiement on-chain par unité avec un canal de paiement.</p></div><div class="intro-badge">Modèle paramétrable</div></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Hypothèses de calcul</h3><p>Renseigne des frais observés ou des hypothèses de simulation.</p></div></div><div class="analytics-controls"><div><label for="ana-count">Nombre de paiements</label><input class="field" id="ana-count" type="number" min="1" max="100000" value="100"></div><div><label for="ana-direct">Frais par transaction directe (ETH)</label><input class="field" id="ana-direct" type="number" min="0" step="0.000001" value="0.00002"></div><div><label for="ana-open">Ouverture du canal (ETH)</label><input class="field" id="ana-open" type="number" min="0" step="0.000001" value="0.00008"></div><div><label for="ana-settle">Règlement du canal (ETH)</label><input class="field" id="ana-settle" type="number" min="0" step="0.000001" value="0.00006"></div></div><div class="button-row"><button class="btn btn-primary" id="run-analysis">Calculer la comparaison</button><button class="btn btn-secondary" id="ana-measured-btn" disabled>Utiliser les frais mesurés</button></div><p class="field-hint">Le bouton se débloque après une ouverture de canal réelle sur Sepolia.</p></article>
+        <div class="stats-grid analytics-stats"><article class="stat-card"><div class="stat-top"><span>Transactions directes</span><span class="stat-icon amber">↗</span></div><div class="stat-value" id="ana-classic-result">0.0020 <small>ETH</small></div><div class="stat-foot">N transactions supposées</div></article><article class="stat-card"><div class="stat-top"><span>Canal de paiement</span><span class="stat-icon cyan">◈</span></div><div class="stat-value" id="ana-channel-result">0.00014 <small>ETH</small></div><div class="stat-foot">Ouverture + règlement</div></article><article class="stat-card"><div class="stat-top"><span>Économie estimée</span><span class="stat-icon green">↘</span></div><div class="stat-value" id="ana-saving-result">0.00186 <small>ETH</small></div><div class="stat-foot" id="ana-percent-result">93 % d'économie estimée</div></article><article class="stat-card"><div class="stat-top"><span>Seuil de rentabilité</span><span class="stat-icon violet">⌖</span></div><div class="stat-value" id="ana-break-even">7</div><div class="stat-foot">Paiements directs équivalents</div></article></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Comparaison visuelle</h3><p>Longueur proportionnelle aux frais calculés</p></div></div><div class="bar-comparison"><div><div class="bar-label"><span>Transactions classiques</span><strong id="bar-classic-label">0.002 ETH</strong></div><div class="bar-track"><div id="bar-classic" class="bar-fill bar-violet"></div></div></div><div><div class="bar-label"><span>Canal</span><strong id="bar-channel-label">0.00014 ETH</strong></div><div class="bar-track"><div id="bar-channel" class="bar-fill bar-cyan"></div></div></div></div><p class="field-hint">Ce modèle ne représente pas un devis réseau en temps réel. Pour l'étude finale, consigne les gasUsed et les prix du gas issus des transactions testées.</p></article>
+      </section>
+
+      <section class="page" id="page-history">
+        <div class="page-intro"><div><span class="kicker">TRAÇABILITÉ</span><h2>Historique & audit</h2><p>Journal local des actions réalisées depuis cette interface.</p></div><div class="button-row"><button class="btn btn-secondary" id="export-history">Exporter CSV</button><button class="btn btn-danger" id="clear-history">Effacer le journal</button></div></div>
+        <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Événement</th><th>Détail</th><th>Horodatage</th><th>Type</th></tr></thead><tbody id="history-table"><tr><td colspan="4" class="table-empty">Aucun événement enregistré.</td></tr></tbody></table></div></article>
+        <article class="panel"><div class="panel-heading"><div><h3>Journal technique</h3><p>Derniers messages de diagnostic</p></div><button class="text-btn" id="clear-console">Effacer</button></div><pre class="console" id="console-log">NexaPay initialisé. Mode démonstration local.</pre></article>
+      </section>
+
+      <section class="page" id="page-provider">
+        <div class="page-intro"><div><span class="kicker">ESPACE OPÉRATEUR</span><h2>Console fournisseur</h2><p>Vue opérateur pour le service Wi-Fi et ses paiements.</p></div><div class="intro-badge">Prototype</div></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span>Sessions enregistrées</span><span class="stat-icon cyan">⌁</span></div><div class="stat-value" id="provider-sessions">0</div><div class="stat-foot">Dans ce navigateur</div></article><article class="stat-card"><div class="stat-top"><span>Valeur signée</span><span class="stat-icon green">◇</span></div><div class="stat-value"><span id="provider-revenue">0.0000</span><small> ETH</small></div><div class="stat-foot">Montants cumulés signés, non recettes finales</div></article><article class="stat-card"><div class="stat-top"><span>Sessions actives</span><span class="stat-icon violet">◉</span></div><div class="stat-value" id="provider-active">0</div><div class="stat-foot">Session de démonstration</div></article><article class="stat-card"><div class="stat-top"><span>État du service</span><span class="stat-icon amber">◎</span></div><div class="stat-value compact-value" id="provider-status">En attente</div><div class="stat-foot">Pas de routeur connecté</div></article></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Paramètres du service</h3><p>Réglages de démonstration locaux</p></div></div><div class="two-col-inner"><div><label for="provider-name">Nom du hotspot</label><input class="field" id="provider-name" value="NexaPay Guest Wi-Fi"></div><div><label for="provider-rate">Tarif de référence (ETH/min)</label><input class="field" id="provider-rate" type="number" min="0.000001" step="0.0001" value="0.001"></div></div><button class="btn btn-primary" id="save-provider">Enregistrer les paramètres</button><div class="notice"><strong>Limite du prototype</strong><p>Cette console n'authentifie pas encore des rôles fournisseurs côté serveur. Ne l'utilise pas pour gérer de vrais fonds ou un réseau de production.</p></div></article>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-intro"><div><span class="kicker">CONFIGURATION</span><h2>Paramètres du prototype</h2><p>Configure le contrat et les valeurs par défaut du laboratoire.</p></div></div>
+        <article class="panel settings-panel"><label for="contract-address">Adresse du contrat (Sepolia)</label><input class="field mono" id="contract-address" placeholder="0x..."><label for="chain-id">Chain ID attendu</label><input class="field" id="chain-id" type="number" value="11155111"><label for="default-payee">Adresse du fournisseur par défaut</label><input class="field mono" id="default-payee" placeholder="0x..."><button class="btn btn-primary" id="save-settings">Enregistrer la configuration</button><div class="notice"><strong>Important</strong><p>Le contrat fourni dans ce kit est une base pédagogique à tester et à auditer. Ne déploie pas de fonds réels. Les fonctions doivent correspondre à l'ABI et au code du contrat effectivement déployé.</p></div></article>
+      </section>
+
+      <footer class="footer"><span>© 2026 NexaPay Lab</span><span>Prototype académique · Ethereum Sepolia · Pas de fonds réels</span></footer>
+    </main>
+  </div>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modal-backdrop"><div class="modal"><button class="modal-close" id="modal-close" aria-label="Fermer">×</button><div class="modal-icon">⌁</div><h3 id="modal-title">NexaPay</h3><p id="modal-message"></p><div id="modal-extra"></div><button class="btn btn-primary full" id="modal-ok">Compris</button></div></div>
+  <script src="./ethers.umd.min.js"></script>
+  <script src="./app.js"></script>
+<script>
+/* Navigation indépendante d'app.js : fonctionne même si le module échoue */
+function go(p){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id==="page-"+p));
+document.querySelectorAll(".nav-item[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===p));
+var a=document.querySelector('.nav-item[data-page="'+p+'"]');if(a)document.getElementById("page-title").textContent=a.textContent.trim().replace(/^\S\s*/,"");
+document.getElementById("sidebar").classList.remove("open");}
+document.querySelectorAll(".nav-item[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+setTimeout(function(){if(!window.__nexa)alert("app.js n'a pas pu se charger. Vérifie que ethers.umd.min.js et app.js sont dans le même dossier que index.html, puis regarde la console (F12).");},3000);
+</script>
+</body>
+</html>
