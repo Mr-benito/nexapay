@@ -11,7 +11,7 @@ const $ = (id) => document.getElementById(id);
 const STORAGE_KEY = "nexapay-academic-v1";
 const DEFAULT_CHAIN_ID = 11155111n;
 
-const CONTRACT_DEFAULT = "0x5F1A99F2539175021351e014736EBF68b05b43AD";
+const CONTRACT_ADDRESS = "0x34E54c08b0F1e0d2a3f50Eef449cf4b90A6C4c86";
 const PAYEE_DEFAULT = "0xA32C0d77f35BB2b8ff80AC57761A10ECf1ccbE62";
 // ABI et schéma EIP-712 du contrat réellement déployé (identiques à la version qui fonctionnait)
 const ABI = [
